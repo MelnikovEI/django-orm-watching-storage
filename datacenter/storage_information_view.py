@@ -5,7 +5,7 @@ from django.shortcuts import render
 
 def storage_information_view(request):
     non_closed_visits = []
-    active_visits = Visit.objects.filter(leaved_at=None)
+    active_visits = Visit.objects.filter(leaved_at__isnull=True)
     for visit in active_visits:
         presence_time = format_duration(visit.get_duration())
         non_closed_visits.append({
@@ -14,6 +14,6 @@ def storage_information_view(request):
             'duration': presence_time
         })
     context = {
-        'non_closed_visits': non_closed_visits,  # не закрытые посещения
+        'non_closed_visits': non_closed_visits,
     }
     return render(request, 'storage_information.html', context)

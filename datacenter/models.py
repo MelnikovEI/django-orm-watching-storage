@@ -32,10 +32,7 @@ class Visit(models.Model):
         )
 
     def get_duration(self) -> timedelta:
-        if self.leaved_at is None:
-            presence_time = localtime() - localtime(self.entered_at)
-        else:
-            presence_time = localtime(self.leaved_at) - localtime(self.entered_at)
+        presence_time = localtime(self.leaved_at) - localtime(self.entered_at)
         return presence_time
 
     def is_long(self, limit=60) -> bool:
