@@ -17,6 +17,10 @@ Create ".env" file and write database access parameters and Debug mode:
     SECRET_KEY=
     DEBUG=False/True
 
+Continue the list of strings representing the host/domain names that this Django site can serve
+
+    ALLOWED_HOSTS=['.localhost', '127.0.0.1', '[::1]']
+
 Access to database should be written in .env variable:
     
     DATABASE_URL=postgres://USER:PASSWORD@HOST:PORT/NAME
