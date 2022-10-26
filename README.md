@@ -12,15 +12,14 @@ Then use `pip` (or `pip3`, if there is a conflict with Python2) to install depen
 ```
 pip install -r requirements.txt
 ```
-Access to database should be written in project/settings.py
-
 Create ".env" file and write database access parameters and Debug mode:
 
-    STORAGE_DB_HOST=
-    STORAGE_DB_USER=
-    STORAGE_DB_PASSWORD=
     SECRET_KEY=
     DEBUG=False/True
+
+Access to database should be written in .env variable:
+    
+    DATABASE_URL=postgres://USER:PASSWORD@HOST:PORT/NAME
 
 ## Getting Started
 Run server:

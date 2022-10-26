@@ -1,20 +1,15 @@
 import os
+
+from django.conf.global_settings import DATABASES
 from environs import Env
+import dj_database_url
 
 
 env = Env()
 env.read_env()
 
-DATABASES = {
-    'default': {
-        'ENGINE': 'django.db.backends.postgresql_psycopg2',
-        'HOST': env('STORAGE_DB_HOST'),
-        'PORT': '5434',
-        'NAME': 'checkpoint',
-        'USER': env('STORAGE_DB_USER'),
-        'PASSWORD': env('STORAGE_DB_PASSWORD'),
-    }
-}
+if os.environ.get('DATABASE_URL'):
+    DATABASES['default'] = dj_database_url.config(default=os.environ['DATABASE_URL'])
 
 INSTALLED_APPS = ['datacenter']
 
